@@ -13,9 +13,21 @@ An enterprise-grade, production-ready Machine Learning Fraud Detection System eq
 
 ---
 
-## 🚀 Live Cloud Deployment on Render
+## 🌐 Live Public Application Deployment (Cloudflare & Render)
 
-This repository includes a native **Render Blueprint (`render.yaml`)** and **`Dockerfile`** for zero-configuration, production cloud deployment.
+The application is deployed with a live HTTPS tunnel accessible from any device or browser without VPN, authentication, or password barriers:
+
+- 📖 **Interactive Swagger UI:** [https://visibility-poster-camcorder-jose.trycloudflare.com/docs](https://visibility-poster-camcorder-jose.trycloudflare.com/docs)
+- 📑 **Interactive ReDoc:** [https://visibility-poster-camcorder-jose.trycloudflare.com/redoc](https://visibility-poster-camcorder-jose.trycloudflare.com/redoc)
+- 🟢 **Live API Health Check:** [https://visibility-poster-camcorder-jose.trycloudflare.com/health](https://visibility-poster-camcorder-jose.trycloudflare.com/health)
+- 🔍 **Real-time Fraud Prediction (POST):** `https://visibility-poster-camcorder-jose.trycloudflare.com/predict`
+- 📊 **Prometheus Metrics Telemetry:** [https://visibility-poster-camcorder-jose.trycloudflare.com/metrics](https://visibility-poster-camcorder-jose.trycloudflare.com/metrics)
+- 📈 **Evidently Data Drift Report (HTML):** [https://visibility-poster-camcorder-jose.trycloudflare.com/drift-report](https://visibility-poster-camcorder-jose.trycloudflare.com/drift-report)
+- 📋 **Evidently Data Quality Report (HTML):** [https://visibility-poster-camcorder-jose.trycloudflare.com/quality-report](https://visibility-poster-camcorder-jose.trycloudflare.com/quality-report)
+
+---
+
+### Alternative Render Cloud Deployment (`render.yaml`)
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Venkata45/online-payment-fraud-detection-system)
 
