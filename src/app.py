@@ -8,6 +8,8 @@ import joblib
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from prometheus_client import (
     Counter,
@@ -23,6 +25,7 @@ from src.config import (
     METADATA_PATH,
     APP_LOG_PATH,
     LOGS_DIR,
+    REPORTS_DIR,
 )
 from src.data_pipeline import clean_data, engineer_features, get_feature_lists
 
@@ -102,6 +105,26 @@ app = FastAPI(
     description="Production-grade ML API with Prometheus monitoring, structured logging, and Evidently AI drift integration.",
     version="1.0.0",
 )
+
+# Mount static reports directory for instant web browser visualization
+if REPORTS_DIR.exists():
+    app.mount("/reports", StaticFiles(directory=str(REPORTS_DIR), html=True), name="reports")
+
+@app.get("/drift-report", tags=["Reports"])
+def get_drift_report():
+    """Serve the interactive Evidently AI Data Drift HTML report."""
+    drift_path = REPORTS_DIR / "evidently_data_drift.html"
+    if drift_path.exists():
+        return FileResponse(drift_path, media_type="text/html")
+    raise HTTPException(status_code=404, detail="Drift report not generated yet. Run monitoring.py first.")
+
+@app.get("/quality-report", tags=["Reports"])
+def get_quality_report():
+    """Serve the interactive Evidently AI Data Quality HTML report."""
+    quality_path = REPORTS_DIR / "evidently_data_quality.html"
+    if quality_path.exists():
+        return FileResponse(quality_path, media_type="text/html")
+    raise HTTPException(status_code=404, detail="Quality report not generated yet. Run monitoring.py first.")
 
 APP_START_TIME = time.time()
 MODEL_PIPELINE = None
