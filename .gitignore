@@ -49,3 +49,4 @@ htmlcov/
 # Docker / Monitoring runtime data (keep configs, ignore persistent DB volumes if any)
 grafana_data/
 prometheus_data/
+*.zip
