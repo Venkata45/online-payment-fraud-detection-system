@@ -1,0 +1,100 @@
+{
+  "reference_rows": 1100,
+  "current_rows": 350,
+  "dataset_drift_detected": true,
+  "share_of_drifted_columns": 0.5384615384615384,
+  "number_of_drifted_columns": 7,
+  "drift_details_by_column": {
+    "Account_Age_Days": {
+      "drift_detected": false,
+      "drift_score": 0.060223476219155414,
+      "threshold": null,
+      "stattest_name": "Wasserstein distance (normed)",
+      "column_type": "num"
+    },
+    "Failed_OTP_Attempts": {
+      "drift_detected": true,
+      "drift_score": 0.45853220799262584,
+      "threshold": null,
+      "stattest_name": "Wasserstein distance (normed)",
+      "column_type": "num"
+    },
+    "Fraud_Risk_Signal": {
+      "drift_detected": false,
+      "drift_score": 0.06318278507301758,
+      "threshold": null,
+      "stattest_name": "Wasserstein distance (normed)",
+      "column_type": "num"
+    },
+    "Minutes_Since_Last_Transaction": {
+      "drift_detected": true,
+      "drift_score": 0.11435281406770863,
+      "threshold": null,
+      "stattest_name": "Wasserstein distance (normed)",
+      "column_type": "num"
+    },
+    "Previous_Disputes": {
+      "drift_detected": false,
+      "drift_score": 0.05090517118559139,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "num"
+    },
+    "Transaction_Hour": {
+      "drift_detected": false,
+      "drift_score": 0.045759522514639786,
+      "threshold": null,
+      "stattest_name": "Wasserstein distance (normed)",
+      "column_type": "num"
+    },
+    "Transactions_Last_Hour": {
+      "drift_detected": true,
+      "drift_score": 0.9814926746524351,
+      "threshold": null,
+      "stattest_name": "Wasserstein distance (normed)",
+      "column_type": "num"
+    },
+    "Device_Status": {
+      "drift_detected": true,
+      "drift_score": 0.15507007919412877,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "cat"
+    },
+    "Fraud_Label": {
+      "drift_detected": false,
+      "drift_score": 0.0031916093975665853,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "cat"
+    },
+    "Location_Type": {
+      "drift_detected": true,
+      "drift_score": 0.12826989373863457,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "cat"
+    },
+    "Payment_Method": {
+      "drift_detected": true,
+      "drift_score": 0.17253341233190275,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "cat"
+    },
+    "Transaction_Amount_INR": {
+      "drift_detected": true,
+      "drift_score": 0.8312686178108014,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "cat"
+    },
+    "Transaction_Channel": {
+      "drift_detected": false,
+      "drift_score": 0.04886321727508347,
+      "threshold": null,
+      "stattest_name": "Jensen-Shannon distance",
+      "column_type": "cat"
+    }
+  }
+}
