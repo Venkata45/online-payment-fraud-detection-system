@@ -411,3 +411,11 @@
 2026-11-06 14:48:01 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN001445 | amount=907.62 | method=NetBanking | label=Fraudulent | prob=0.5341 | risk=MEDIUM | latency_ms=6.81
 2026-11-06 14:48:01 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN001169 | amount=789.41 | method=Card | label=Legitimate | prob=0.3735 | risk=LOW | latency_ms=6.20
 2026-11-06 14:48:01 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN001124 | amount=307.22 | method=UPI | label=Legitimate | prob=0.4881 | risk=MEDIUM | latency_ms=6.42
+2026-11-06 14:55:22 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN_LIVE_CHECK | amount=1250.0 | method=UPI | label=Legitimate | prob=0.3203 | risk=LOW | latency_ms=61.41
+2026-11-06 15:11:25 [INFO] [fraud_detection_service] Model successfully loaded from /Users/venkatareddy/Desktop/MLOPS Internal(E20)/models/fraud_model.joblib
+2026-11-06 15:11:25 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN_TEST_001 | amount=150.0 | method=UPI | label=Legitimate | prob=0.4068 | risk=MEDIUM | latency_ms=57.23
+2026-11-06 15:11:25 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN_TEST_HIGH_RISK | amount=9850.0 | method=Card | label=Legitimate | prob=0.0000 | risk=LOW | latency_ms=7.23
+2026-11-06 15:11:25 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN_BATCH_1 | amount=200.0 | method=UPI | label=Legitimate | prob=0.3416 | risk=LOW | latency_ms=6.32
+2026-11-06 15:11:25 [INFO] [fraud_detection_service] PREDICTION | txn_id=TXN_BATCH_2 | amount=4500.0 | method=Card | label=Legitimate | prob=0.3100 | risk=LOW | latency_ms=5.71
+2026-11-06 15:11:25 [INFO] [fraud_detection_service] BATCH PREDICTION | total=2 | fraud=0 | legit=2 | total_latency_ms=12.44
+2026-11-06 15:11:50 [INFO] [fraud_detection_service] Model successfully loaded from /Users/venkatareddy/Desktop/MLOPS Internal(E20)/models/fraud_model.joblib
