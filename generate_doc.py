@@ -92,26 +92,27 @@ def create_report():
     srun.font.color.rgb = RGBColor(89, 89, 89)
     
     # Metadata Table
-    table = doc.add_table(rows=8, cols=2)
-    table.alignment = WD_TABLE_ALIGNMENT.CENTER
-    table.autofit = False
-    
     meta_info = [
         ("Student Name / Register Number:", "Venkata Reddy | 231FA04E20"),
         ("Course & Laboratory:", "Machine Learning Operations (MLOps) Laboratory"),
         ("Assigned Examination Task:", "Set-3, Question 3 (Fraud Detection & Monitoring)"),
         ("Submission ZIP Archive:", "231FA04E20_MLOps_Internal.zip"),
-        ("Live FastAPI Application:", "https://visibility-poster-camcorder-jose.trycloudflare.com/docs"),
-        ("Live Grafana Dashboard:", "https://buys-systems-bars-sage.trycloudflare.com"),
+        ("Live FastAPI Swagger UI:", "https://visibility-poster-camcorder-jose.trycloudflare.com/docs"),
+        ("Live Grafana Dashboard (Public):", "https://buys-systems-bars-sage.trycloudflare.com"),
+        ("Live Prometheus Server (Public):", "https://char-fragrances-charles-tail.trycloudflare.com/targets"),
         ("GitHub Project Repository:", "https://github.com/Venkata45/online-payment-fraud-detection-system"),
         ("Passing CI/CD Workflow Run:", "https://github.com/Venkata45/online-payment-fraud-detection-system/actions/runs/42201006013")
     ]
     
+    table = doc.add_table(rows=len(meta_info), cols=2)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.autofit = False
+    
     for i, (k, v) in enumerate(meta_info):
         row = table.rows[i]
         c0, c1 = row.cells[0], row.cells[1]
-        c0.width = Inches(2.2)
-        c1.width = Inches(4.6)
+        c0.width = Inches(2.3)
+        c1.width = Inches(4.5)
         
         set_cell_background(c0, "F2F4F7")
         set_cell_background(c1, "FFFFFF")
@@ -136,7 +137,7 @@ def create_report():
         if "http" in v:
             r1.font.color.rgb = RGBColor(5, 99, 193)
             r1.font.underline = True
-    
+
     doc.add_paragraph().paragraph_format.space_after = Pt(6)
     
     # ------------------ Abstract ------------------
@@ -151,7 +152,9 @@ def create_report():
         "and packaged into a low-latency FastAPI inference microservice with Prometheus telemetry and structured JSON logging. "
         "Evidently AI was integrated to monitor data drift and data quality against incoming transaction streams. When subjected to simulated "
         "traffic shifts altering transaction amounts, velocity, and payment instruments, the monitoring framework successfully identified 53.8% "
-        "feature drift (p < 0.001), triggering automated drift alerts and structured reliability mitigation protocols."
+        "feature drift (p < 0.001), triggering automated drift alerts and structured reliability mitigation protocols. All system services, "
+        "including the FastAPI endpoints, interactive HTML drift reports, Prometheus scrapers, and Grafana dashboards, have been deployed to public "
+        "HTTPS cloud endpoints accessible on both mobile and laptop devices."
     )
     p.paragraph_format.line_spacing = 1.15
     p.paragraph_format.space_after = Pt(8)
@@ -321,10 +324,10 @@ def create_report():
     cp = c_cell.paragraphs[0]
     crun = cp.add_run(
         '# Verified Inference Request:\n'
-        'curl -X POST http://localhost:8000/predict \\\n'
+        'curl -X POST https://visibility-poster-camcorder-jose.trycloudflare.com/predict \\\n'
         '  -H "Content-Type: application/json" \\\n'
         '  -d \'{\n'
-        '    "Transaction_ID": "TXN_9999",\n'
+        '    "Transaction_ID": "TXN_LIVE_MOBILE_01",\n'
         '    "Transaction_Amount_INR": 35000.0,\n'
         '    "Transaction_Hour": 3,\n'
         '    "Payment_Method": "NetBanking",\n'
@@ -340,13 +343,13 @@ def create_report():
         '  }\'\n\n'
         '# Verified Output Response:\n'
         '{\n'
-        '  "Transaction_ID": "TXN_9999",\n'
+        '  "Transaction_ID": "TXN_LIVE_MOBILE_01",\n'
         '  "prediction": "Legitimate",\n'
         '  "is_fraud": 0,\n'
         '  "fraud_probability": 0.0,\n'
         '  "risk_level": "LOW",\n'
-        '  "processing_time_ms": 31.53,\n'
-        '  "timestamp": "2026-11-06T10:04:27.269399+00:00"\n'
+        '  "processing_time_ms": 161.7,\n'
+        '  "timestamp": "2026-11-06T10:44:16.176860+00:00"\n'
         '}'
     )
     crun.font.name = "Courier New"
@@ -354,24 +357,81 @@ def create_report():
 
     doc.add_paragraph().paragraph_format.space_after = Pt(6)
 
-    # ------------------ 4.2 Cloud Deployment on Render & Cloudflare ------------------
-    h2 = doc.add_heading("4.2 Production Cloud Deployment & Live Accessible Verification URLs", level=2)
+    # ------------------ 4.2 Comprehensive Deployed Links Table ------------------
+    h2 = doc.add_heading("4.2 Live Public Deployment URLs (Mobile & Laptop Accessible)", level=2)
     h2.style.font.color.rgb = RGBColor(47, 85, 151)
 
     doc.add_paragraph(
-        "To satisfy the academic examination requirement for an accessible, publicly deployed application that can be evaluated beyond "
-        "local network constraints (addressing the criterion that 'a localhost link alone is not considered an accessible deployment link'), "
-        "the application has been deployed live over an authenticated Cloudflare HTTPS proxy and prepared for Render (render.yaml).\n\n"
-        "Faculty and evaluators can click and test the following live public URLs directly without login, VPN, or credentials:\n"
-        "  • Interactive Swagger Documentation: https://visibility-poster-camcorder-jose.trycloudflare.com/docs\n"
-        "  • Alternative ReDoc Documentation: https://visibility-poster-camcorder-jose.trycloudflare.com/redoc\n"
-        "  • Live Application Health Check: https://visibility-poster-camcorder-jose.trycloudflare.com/health\n"
-        "  • Fraud Prediction Endpoint (POST): https://visibility-poster-camcorder-jose.trycloudflare.com/predict\n"
-        "  • Prometheus Metrics Telemetry: https://visibility-poster-camcorder-jose.trycloudflare.com/metrics\n"
-        "  • Interactive Evidently Data Drift Report: https://visibility-poster-camcorder-jose.trycloudflare.com/drift-report\n"
-        "  • Interactive Evidently Data Quality Report: https://visibility-poster-camcorder-jose.trycloudflare.com/quality-report\n\n"
-        "All routes return HTTP 200 OK and render the interactive dashboards immediately."
+        "To fulfill the laboratory requirement that 'a localhost link alone is not considered an accessible deployment link', "
+        "all system components have been deployed over public HTTPS cloud proxies. Evaluators can access these links directly from "
+        "any browser on a laptop, tablet, or mobile phone without VPN, account sign-in, or passwords."
     )
+    
+    # Deployed Links Table
+    link_rows = [
+        ("FastAPI Swagger Documentation", "https://visibility-poster-camcorder-jose.trycloudflare.com/docs", "HTTP 200 OK", "Interactive OpenAPI documentation and execution portal"),
+        ("FastAPI ReDoc Documentation", "https://visibility-poster-camcorder-jose.trycloudflare.com/redoc", "HTTP 200 OK", "Alternative visual API reference specification"),
+        ("Application Health Check", "https://visibility-poster-camcorder-jose.trycloudflare.com/health", "HTTP 200 OK", "Model loading confirmation, system status, and uptime"),
+        ("Fraud Prediction API (POST)", "https://visibility-poster-camcorder-jose.trycloudflare.com/predict", "HTTP POST", "Real-time single transaction fraud inference endpoint"),
+        ("Batch Prediction API (POST)", "https://visibility-poster-camcorder-jose.trycloudflare.com/predict/batch", "HTTP POST", "Bulk transaction classification endpoint"),
+        ("Prometheus Telemetry Scrape", "https://visibility-poster-camcorder-jose.trycloudflare.com/metrics", "HTTP 200 OK", "Live metrics exposition endpoint for scrapers"),
+        ("Evidently AI Data Drift Report", "https://visibility-poster-camcorder-jose.trycloudflare.com/drift-report", "HTTP 200 OK", "Full interactive HTML report showing 53.8% drift"),
+        ("Evidently AI Data Quality Report", "https://visibility-poster-camcorder-jose.trycloudflare.com/quality-report", "HTTP 200 OK", "Interactive HTML report comparing distributions"),
+        ("Grafana Monitoring Dashboard", "https://buys-systems-bars-sage.trycloudflare.com", "HTTP 200 OK", "Live visual dashboard with zero-login anonymous access"),
+        ("Prometheus Targets Overview", "https://char-fragrances-charles-tail.trycloudflare.com/targets", "HTTP 200 OK", "Prometheus scraper engine status showing State: UP"),
+        ("Prometheus Graph Query Portal", "https://char-fragrances-charles-tail.trycloudflare.com/graph", "HTTP 200 OK", "Time-series PromQL query evaluation engine"),
+        ("GitHub Project Repository", "https://github.com/Venkata45/online-payment-fraud-detection-system", "Public Git", "Complete source tree, configs, CI/CD, and reports"),
+        ("GitHub Actions CI/CD Run", "https://github.com/Venkata45/online-payment-fraud-detection-system/actions/runs/42201006013", "Success", "Automated test suite, linting, and build verification")
+    ]
+    
+    l_table = doc.add_table(rows=len(link_rows)+1, cols=4)
+    l_table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    l_headers = ["Service / Endpoint", "Public Accessible URL", "Status", "Functional Description"]
+    
+    for j, h in enumerate(l_headers):
+        cell = l_table.rows[0].cells[j]
+        set_cell_background(cell, "1F4E79")
+        set_cell_margins(cell, 80, 80, 100, 100)
+        p = cell.paragraphs[0]
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        r = p.add_run(h)
+        r.font.name = "Calibri"
+        r.font.size = Pt(8.5)
+        r.font.bold = True
+        r.font.color.rgb = RGBColor(255, 255, 255)
+        
+    for i, row_data in enumerate(link_rows):
+        row = l_table.rows[i+1]
+        bg = "FFFFFF" if i % 2 == 0 else "F9FAFB"
+        for j, val in enumerate(row_data):
+            cell = row.cells[j]
+            set_cell_background(cell, bg)
+            set_cell_margins(cell, 60, 60, 80, 80)
+            p = cell.paragraphs[0]
+            if j == 1:
+                p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                r = p.add_run(val)
+                r.font.name = "Calibri"
+                r.font.size = Pt(8)
+                r.font.color.rgb = RGBColor(5, 99, 193)
+                r.font.underline = True
+            elif j == 2:
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                r = p.add_run(val)
+                r.font.name = "Calibri"
+                r.font.size = Pt(8)
+                r.font.bold = True
+                if "200" in val or "Success" in val:
+                    r.font.color.rgb = RGBColor(0, 128, 0)
+            else:
+                p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                r = p.add_run(val)
+                r.font.name = "Calibri"
+                r.font.size = Pt(8)
+                if j == 0:
+                    r.font.bold = True
+
+    doc.add_paragraph().paragraph_format.space_after = Pt(6)
 
     # ------------------ 5. Prometheus Metrics & Observability ------------------
     h1 = doc.add_heading("5. Prometheus Metrics & Observability Stack", level=1)
@@ -394,7 +454,8 @@ def create_report():
     doc.add_paragraph(
         "As highlighted in Figure 7, the Prometheus server successfully scrapes the FastAPI microservice with State: UP "
         "(Last scrape: 2.717s ago, 8ms latency). Note: The target URI uses 'host.docker.internal:8000' because Prometheus operates "
-        "inside a Docker container routing to the host machine. In the host browser, metrics are directly accessible via localhost:8000/metrics."
+        "inside a Docker container routing to the host machine. In the host browser, metrics are directly accessible via localhost:8000/metrics "
+        "or over the public Cloudflare tunnel."
     )
 
     # Figure 8: Grafana Dashboard
@@ -404,7 +465,9 @@ def create_report():
     doc.add_paragraph(
         "Figure 8 illustrates the comprehensive Grafana monitoring dashboard configured for the fraud detection system. "
         "Key operational indicators include: Model Status ('HEALTHY'), Total API Requests (5), Request Throughput spikes per endpoint, "
-        "Prediction Count partitioned by class ('Legitimate'), and Response Latency percentiles."
+        "Prediction Count partitioned by class ('Legitimate'), and Response Latency percentiles. "
+        "Anonymous viewer access has been enabled, allowing anyone to view this live dashboard at: "
+        "https://buys-systems-bars-sage.trycloudflare.com."
     )
 
     # ------------------ 6. Evidently AI Data Drift & Traffic Simulation ------------------
@@ -537,7 +600,7 @@ def create_report():
     doc.add_paragraph(
         "All requirements of Set-3 (Question 3) have been fully implemented, rigorously tested, deployed, and verified. "
         "The submission package contains the complete executable source tree, interactive Jupyter Notebook, visual Evidently AI HTML reports, "
-        "trained model binaries, and verification screenshots."
+        "trained model binaries, live public cloud URLs, and verification screenshots."
     )
     
     output_path = "/Users/venkatareddy/Desktop/231FA04E20_Payment_Fraud_Detection_MLOps_Report.docx"
