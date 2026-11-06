@@ -92,7 +92,7 @@ def create_report():
     srun.font.color.rgb = RGBColor(89, 89, 89)
     
     # Metadata Table
-    table = doc.add_table(rows=7, cols=2)
+    table = doc.add_table(rows=8, cols=2)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     table.autofit = False
     
@@ -101,7 +101,8 @@ def create_report():
         ("Course & Laboratory:", "Machine Learning Operations (MLOps) Laboratory"),
         ("Assigned Examination Task:", "Set-3, Question 3 (Fraud Detection & Monitoring)"),
         ("Submission ZIP Archive:", "231FA04E20_MLOps_Internal.zip"),
-        ("Live Deployed Application (Public):", "https://visibility-poster-camcorder-jose.trycloudflare.com/docs"),
+        ("Live FastAPI Application:", "https://visibility-poster-camcorder-jose.trycloudflare.com/docs"),
+        ("Live Grafana Dashboard:", "https://buys-systems-bars-sage.trycloudflare.com"),
         ("GitHub Project Repository:", "https://github.com/Venkata45/online-payment-fraud-detection-system"),
         ("Passing CI/CD Workflow Run:", "https://github.com/Venkata45/online-payment-fraud-detection-system/actions/runs/42201006013")
     ]

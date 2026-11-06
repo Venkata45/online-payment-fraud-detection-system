@@ -27,6 +27,13 @@ The application is deployed with a live HTTPS tunnel accessible from any device 
 
 ---
 
+### 2. Grafana & Prometheus Live Observability (Live)
+- 📊 **Grafana Live Monitoring Dashboard (No Login Needed):** [https://buys-systems-bars-sage.trycloudflare.com](https://buys-systems-bars-sage.trycloudflare.com)
+- 🎯 **Prometheus Targets Status (State: UP):** [https://char-fragrances-charles-tail.trycloudflare.com/targets](https://char-fragrances-charles-tail.trycloudflare.com/targets)
+- 📈 **Prometheus Graph Query Portal:** [https://char-fragrances-charles-tail.trycloudflare.com/graph](https://char-fragrances-charles-tail.trycloudflare.com/graph)
+
+---
+
 ### Alternative Render Cloud Deployment (`render.yaml`)
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Venkata45/online-payment-fraud-detection-system)
