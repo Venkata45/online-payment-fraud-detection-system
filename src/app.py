@@ -8,6 +8,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
@@ -104,6 +105,14 @@ app = FastAPI(
     title="Online Payment Fraud Detection System",
     description="Production-grade ML API with Prometheus monitoring, structured logging, and Evidently AI drift integration.",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Mount static reports directory for instant web browser visualization

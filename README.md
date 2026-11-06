@@ -1,5 +1,6 @@
 # 🛡️ Online Payment Fraud Detection & Continuous Monitoring System
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Venkata45/online-payment-fraud-detection-system)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)](https://prometheus.io)
@@ -9,6 +10,33 @@
 [![Pytest](https://img.shields.io/badge/Pytest-Passing-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](https://pytest.org)
 
 An enterprise-grade, production-ready Machine Learning Fraud Detection System equipped with continuous monitoring for performance issues, execution errors, latency degradation, and real-time transaction data drift.
+
+---
+
+## 🚀 Live Cloud Deployment on Render
+
+This repository includes a native **Render Blueprint (`render.yaml`)** and **`Dockerfile`** for zero-configuration, production cloud deployment.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Venkata45/online-payment-fraud-detection-system)
+
+### Quick Deploy via Render Dashboard:
+1. Open [dashboard.render.com](https://dashboard.render.com) and sign in with GitHub.
+2. Click **New +** ➔ **Blueprint** (or **Web Service**).
+3. Connect repository: `https://github.com/Venkata45/online-payment-fraud-detection-system`.
+4. Render automatically detects `render.yaml`:
+   - **Environment:** `Python 3.11.9`
+   - **Build Command:** `pip install -r requirements.txt && python -m src.train && python -m src.monitoring`
+   - **Start Command:** `uvicorn src.app:app --host 0.0.0.0 --port $PORT`
+   - **Health Check:** `/health`
+5. Click **Apply**. Render builds the service and generates a public HTTPS URL (e.g. `https://online-payment-fraud-detection-system.onrender.com`).
+
+### Publicly Accessible Endpoints on Render:
+- 📖 **Swagger UI Documentation:** `https://<service-name>.onrender.com/docs`
+- 🟢 **API Health Check:** `https://<service-name>.onrender.com/health`
+- 🔍 **Real-time Fraud Prediction (POST):** `https://<service-name>.onrender.com/predict`
+- 📊 **Prometheus Metrics Scrape:** `https://<service-name>.onrender.com/metrics`
+- 📈 **Interactive Data Drift Report:** `https://<service-name>.onrender.com/drift-report`
+- 📋 **Interactive Data Quality Report:** `https://<service-name>.onrender.com/quality-report`
 
 ---
 
