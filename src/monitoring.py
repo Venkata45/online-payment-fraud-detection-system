@@ -2,6 +2,12 @@ import json
 import logging
 from pathlib import Path
 import pandas as pd
+
+# Compatibility patch for Pandas >= 2.2 with Evidently legacy imports
+import pandas.core.dtypes.common as pd_common
+if not hasattr(pd_common, "infer_dtype_from_object"):
+    pd_common.infer_dtype_from_object = pd.api.types.infer_dtype
+
 from evidently.legacy.report import Report
 from evidently.legacy.metric_preset import DataDriftPreset, DataQualityPreset
 
